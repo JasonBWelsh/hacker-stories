@@ -3,14 +3,18 @@ import List from './components/List';
 import Search from './components/Search';
 import './App.css';
 
-function App() {
-  const [searchTerm, setSetSearchTerm] = useState(
-    localStorage.getItem('search') || 'React'
-  );
+const useSemiPersistentState = (key, initialState) => {
+  const [value, setValue] = useState(localStorage.getItem(key) || initialState);
 
   useEffect(() => {
-    localStorage.setItem('search', searchTerm);
-  }, [searchTerm]);
+    localStorage.setItem(key, value);
+  }, [value, key]);
+
+  return [value, setValue];
+};
+
+function App() {
+  const [searchTerm, setSearchTerm] = useSemiPersistentState('search', 'React');
 
   const stories = [
     {
@@ -37,7 +41,7 @@ function App() {
 
   const handleSearch = (event) => {
     console.log('!!!', event.target.value);
-    setSetSearchTerm(event.target.value);
+    setSearchTerm(event.target.value);
   };
 
   return (
