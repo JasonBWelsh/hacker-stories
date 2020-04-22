@@ -3,6 +3,25 @@ import List from './components/List';
 import InputWithLabel from './components/InputWithLabel';
 import './App.css';
 
+const initialStories = [
+  {
+    title: 'React',
+    url: 'https://reactjs.org/',
+    author: 'Jordan Walke',
+    num_comments: 3,
+    points: 4,
+    objectID: 0,
+  },
+  {
+    title: 'Redux',
+    url: 'https://redux.js.org/',
+    author: 'Dan Abramov, Andrew Clark',
+    num_comments: 2,
+    points: 5,
+    objectID: 1,
+  },
+];
+
 const useSemiPersistentState = (key, initialState) => {
   const [value, setValue] = useState(localStorage.getItem(key) || initialState);
 
@@ -14,26 +33,8 @@ const useSemiPersistentState = (key, initialState) => {
 };
 
 function App() {
+  const [stories, setStories] = useState(initialStories);
   const [searchTerm, setSearchTerm] = useSemiPersistentState('search', 'React');
-
-  const stories = [
-    {
-      title: 'React',
-      url: 'https://reactjs.org/',
-      author: 'Jordan Walke',
-      num_comments: 3,
-      points: 4,
-      objectID: 0,
-    },
-    {
-      title: 'Redux',
-      url: 'https://redux.js.org/',
-      author: 'Dan Abramov, Andrew Clark',
-      num_comments: 2,
-      points: 5,
-      objectID: 1,
-    },
-  ];
 
   const searchedStories = stories.filter((story) =>
     story.title.toLowerCase().includes(searchTerm.toLowerCase())
@@ -42,6 +43,13 @@ function App() {
   const handleSearch = (event) => {
     console.log('!!!', event.target.value);
     setSearchTerm(event.target.value);
+  };
+
+  const handleRemoveStory = (item) => {
+    const newStories = stories.filter(
+      (story) => story.objectID !== item.objectID
+    );
+    setStories(newStories);
   };
 
   return (
@@ -59,7 +67,7 @@ function App() {
 
       <hr />
 
-      <List list={searchedStories} />
+      <List list={searchedStories} onRemoveItem={handleRemoveStory} />
     </>
   );
 }
