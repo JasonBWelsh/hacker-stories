@@ -48,13 +48,14 @@ function App() {
     <>
       <h1>Hacker News Stories</h1>
 
-      {/* <Search search={searchTerm} onSearch={handleSearch} /> */}
       <InputWithLabel
         id="search"
-        label="search"
         value={searchTerm}
         onInputChange={handleSearch}
-      />
+        isFocused
+      >
+        <strong>Search:</strong>
+      </InputWithLabel>
 
       <hr />
 
