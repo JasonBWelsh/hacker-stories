@@ -1,5 +1,5 @@
 import React from 'react';
-import InputWithLabel from './InputWithLabel';
+import InputWithLabel from '../InputWithLabel/InputWithLabel.js';
 
 const SearchForm = ({ searchTerm, handleSearchInput, handleSearchSubmit }) => {
   return (
