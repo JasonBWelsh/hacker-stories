@@ -1,11 +1,11 @@
 import React from 'react';
-import { StyledHeader } from './styles';
+import { StyledHeader, MainHeading } from './styles';
 import SearchForm from '../SearchForm/SearchForm.js';
 
 const Header = ({ searchTerm, handleSearchInput, handleSearchSubmit }) => {
   return (
     <StyledHeader>
-      <h1>Hacker News Stories</h1>
+      <MainHeading>Hacker News Search</MainHeading>
       <SearchForm
         handleSearchSubmit={handleSearchSubmit}
         searchTerm={searchTerm}

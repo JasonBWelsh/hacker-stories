@@ -70,12 +70,6 @@ const Container = () => {
         isError={stories.isError}
         onRemoveItem={handleRemoveStory}
       />
-      {/* {stories.isError && <p>Something went wrong ...</p>}
-      {stories.isLoading ? (
-        <p>Loading ...</p>
-      ) : (
-        <List list={stories.data} onRemoveItem={handleRemoveStory} />
-      )} */}
     </StyledContainer>
   );
 };

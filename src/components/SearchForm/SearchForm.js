@@ -1,22 +1,21 @@
 import React from 'react';
 import InputWithLabel from '../InputWithLabel/InputWithLabel.js';
+import { StyledForm, StyledSearchButton } from './styles.js';
 
 const SearchForm = ({ searchTerm, handleSearchInput, handleSearchSubmit }) => {
   return (
-    <form onSubmit={handleSearchSubmit}>
+    <StyledForm onSubmit={handleSearchSubmit}>
       <InputWithLabel
         id="search"
         value={searchTerm}
         isFocused
         onInputChange={handleSearchInput}
-      >
-        <strong>Search:</strong>
-      </InputWithLabel>
+      ></InputWithLabel>
 
-      <button type="submit" disabled={!searchTerm}>
+      <StyledSearchButton type="submit" disabled={!searchTerm}>
         search
-      </button>
-    </form>
+      </StyledSearchButton>
+    </StyledForm>
   );
 };
 

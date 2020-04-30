@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import { StyledInput } from './styles.js';
 
 const InputWithLabel = ({
   id,
@@ -20,7 +21,7 @@ const InputWithLabel = ({
     <>
       <label htmlFor={id}>{children}</label>
       &nbsp;
-      <input
+      <StyledInput
         id={id}
         type="text"
         value={value}
