@@ -14,7 +14,7 @@ body,
 body {
   margin: 0;
   background-color: #123;
-  background-image: linear-gradient(#123, #3a1c71);
+  background-image: linear-gradient(#123, #3a2266, #123);
   color: #fff;
   font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI',
     'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',

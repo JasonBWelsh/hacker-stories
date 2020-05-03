@@ -16,15 +16,15 @@ const Item = ({ item, onRemoveItem }) => {
 
   return (
     <StyledItem>
-      <a href={item.url}>
+      <a href={item.url} target="_blank" rel="noreferrer noopener">
         <h3>{item.title}</h3>
-        <span>author: {item.author}</span>
-        <span>comments: {item.num_comments}</span>
-        <span>points: {item.points}</span>
-        <button type="button" onClick={handleRemoveItem}>
-          x
-        </button>
       </a>
+      <span>author: {item.author}</span>
+      <span>comments: {item.num_comments}</span>
+      <span>points: {item.points}</span>
+      <button type="button" onClick={handleRemoveItem}>
+        x
+      </button>
     </StyledItem>
   );
 };
