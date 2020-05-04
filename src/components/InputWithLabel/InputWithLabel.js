@@ -20,7 +20,6 @@ const InputWithLabel = ({
   return (
     <>
       <label htmlFor={id}>{children}</label>
-      &nbsp;
       <StyledInput
         id={id}
         type="text"

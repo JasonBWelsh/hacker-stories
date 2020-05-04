@@ -2,7 +2,6 @@ import React, { useState, useEffect, useReducer, useCallback } from 'react';
 import axios from 'axios';
 import Header from '../Header/Header.js';
 import Page from '../Page/Page.js';
-// import List from './components/List';
 import useSemiPersistentState from '../../hooks/useSemiPersistantState';
 import storiesReducer from '../../reducers/storiesReducer';
 import { StyledContainer } from './styles';
@@ -10,7 +9,10 @@ import { StyledContainer } from './styles';
 const API_ENDPOINT = 'https://hn.algolia.com/api/v1/search?query=';
 
 const Container = () => {
-  const [searchTerm, setSearchTerm] = useSemiPersistentState('search', 'Space');
+  const [searchTerm, setSearchTerm] = useSemiPersistentState(
+    'search',
+    'JavaScript'
+  );
 
   const [url, setUrl] = useState(`${API_ENDPOINT}${searchTerm}`);
 

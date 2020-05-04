@@ -10,7 +10,9 @@ const SearchForm = ({ searchTerm, handleSearchInput, handleSearchSubmit }) => {
         value={searchTerm}
         isFocused
         onInputChange={handleSearchInput}
-      ></InputWithLabel>
+      >
+        Topic:{' '}
+      </InputWithLabel>
 
       <StyledSearchButton type="submit" disabled={!searchTerm}>
         search

@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyledListContainer, StyledItem } from './styles.js';
 import { ReactComponent as Cross } from '../../icons/cross.svg';
+import DateTime from 'luxon/src/datetime.js';
 
 const List = ({ list, onRemoveItem }) => {
   return (
@@ -14,6 +15,12 @@ const List = ({ list, onRemoveItem }) => {
 
 const Item = ({ item, onRemoveItem }) => {
   const handleRemoveItem = () => onRemoveItem(item);
+  // const formattedDate = DateTime.fromISO(item.created_at);
+  const formattedDate = String(new Date(item.created_at))
+    .split(' ')
+    .slice(1, 4)
+    .join(' ');
+  console.log('DRD 1812 ---', formattedDate);
 
   return (
     <StyledItem>
@@ -31,10 +38,11 @@ const Item = ({ item, onRemoveItem }) => {
         <span>
           points: <span className="item-text-highlight">{item.points}</span>
         </span>
+        <span className="item-text-highlight">{formattedDate}</span>
       </div>
 
       <button type="button" onClick={handleRemoveItem}>
-        <Cross height="20px" width="20px" />
+        <Cross height="15px" width="15px" />
       </button>
     </StyledItem>
   );

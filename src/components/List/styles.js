@@ -17,7 +17,7 @@ export const StyledListContainer = styled.div`
 
 export const StyledItem = styled.div`
   margin: 0.5rem;
-  // border: 1px solid #fff;
+  border: 1px solid #555;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
   padding: 0.5rem;
   width: 200px;
@@ -58,8 +58,8 @@ export const StyledItem = styled.div`
     border: none;
     background: transparent;
     position: absolute;
-    bottom: -5px;
-    right: -5px;
+    top: 5px;
+    right: 0;
     cursor: pointer;
     transition: background-color 0.3s ease;
 
