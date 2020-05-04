@@ -17,13 +17,19 @@ export const StyledListContainer = styled.div`
 
 export const StyledItem = styled.div`
   margin: 0.5rem;
-  border: 1px solid #fff;
+  // border: 1px solid #fff;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
   padding: 0.5rem;
   width: 200px;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   position: relative;
+  transition: all 0.3s ease;
+
+  &:hover {
+    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3);
+  }
 
   a {
     transition: all 0.3s ease;
@@ -35,25 +41,34 @@ export const StyledItem = styled.div`
     }
   }
 
-  span {
-    margin-bottom: 0.5rem;
+  .item-info-container {
+    display: flex;
+    flex-direction: column;
+
+    span {
+      margin-bottom: 0.5rem;
+    }
+
+    .item-text-highlight {
+      color: #ffa3ce;
+    }
   }
 
   button {
-    height: 30px;
-    width: 30px;
-    border: 1px solid #fff;
-    padding: 0.5rem;
+    border: none;
     background: transparent;
     position: absolute;
-    bottom: 5px;
-    right: 5px;
-    color: #fff;
+    bottom: -5px;
+    right: -5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
 
-    &:hover {
-      background: rgba(255, 255, 255, 0.5);
+    svg {
+      transition: all 0.3s ease;
+    }
+
+    &:hover svg {
+      transform: scale(1.1) rotate(-45deg);
     }
   }
 `;
