@@ -20,7 +20,6 @@ const Item = ({ item, onRemoveItem }) => {
     .split(' ')
     .slice(1, 4)
     .join(' ');
-  console.log('DRD 1812 ---', formattedDate);
 
   return (
     <StyledItem>

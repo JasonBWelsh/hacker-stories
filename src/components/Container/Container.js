@@ -4,7 +4,6 @@ import Header from '../Header/Header.js';
 import Page from '../Page/Page.js';
 import useSemiPersistentState from '../../hooks/useSemiPersistantState';
 import storiesReducer from '../../reducers/storiesReducer';
-import sortReducer from '../../reducers/sortReducer';
 import { StyledContainer } from './styles';
 import sortBy from 'lodash/sortBy';
 
@@ -74,14 +73,22 @@ const Container = () => {
       case 'oldest':
         dispatchStories({ type: 'SORT_OLDEST' });
         break;
+      case 'most_points':
+        dispatchStories({ type: 'SORT_MOST_POINTS' });
+        break;
+      case 'least_points':
+        dispatchStories({ type: 'SORT_LEAST_POINTS' });
+        break;
+      case 'most_comments':
+        dispatchStories({ type: 'SORT_MOST_COMMENTS' });
+        break;
+      case 'least_comments':
+        dispatchStories({ type: 'SORT_LEAST_COMMENTS' });
+        break;
       default:
         break;
     }
   };
-
-  const sortTest = sortBy(stories.data, 'created_at').reverse();
-  console.log('DRD sortBy test --', sortTest);
-  console.log('DRD5 - inside `Container` log `stories.data:::', stories.data);
 
   return (
     <StyledContainer>

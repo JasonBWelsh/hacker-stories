@@ -31,19 +31,37 @@ const storiesReducer = (state, action) => {
         ),
       };
     case 'SORT_MOST_RECENT':
-      console.log('DRD9 SORT_MOST_RECENT');
       return {
         ...state,
         data: sortBy(state.data, 'created_at').reverse(),
       };
     case 'SORT_OLDEST':
-      console.log('DRD9 SORT_OLDEST');
       return {
         ...state,
         data: sortBy(state.data, 'created_at'),
       };
+    case 'SORT_MOST_POINTS':
+      return {
+        ...state,
+        data: sortBy(state.data, 'points').reverse(),
+      };
+    case 'SORT_LEAST_POINTS':
+      return {
+        ...state,
+        data: sortBy(state.data, 'points'),
+      };
+    case 'SORT_MOST_COMMENTS':
+      return {
+        ...state,
+        data: sortBy(state.data, 'num_comments').reverse(),
+      };
+    case 'SORT_LEAST_COMMENTS':
+      return {
+        ...state,
+        data: sortBy(state.data, 'num_comments'),
+      };
     default:
-      throw new Error();
+      return state;
   }
 };
 
