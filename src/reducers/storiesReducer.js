@@ -1,4 +1,8 @@
+import sortBy from 'lodash/sortBy';
+
 const storiesReducer = (state, action) => {
+  console.log('DRDX action.payload:::', action.payload);
+  console.log('DRDX state:::', state);
   switch (action.type) {
     case 'STORIES_FETCH_INIT':
       return {
@@ -11,7 +15,7 @@ const storiesReducer = (state, action) => {
         ...state,
         isLoading: false,
         isError: false,
-        data: action.payload,
+        data: sortBy(action.payload, 'created_at').reverse(),
       };
     case 'STORIES_FETCH_FAILURE':
       return {
@@ -25,6 +29,18 @@ const storiesReducer = (state, action) => {
         data: state.data.filter(
           (story) => action.payload.objectID !== story.objectID
         ),
+      };
+    case 'SORT_MOST_RECENT':
+      console.log('DRD9 SORT_MOST_RECENT');
+      return {
+        ...state,
+        data: sortBy(state.data, 'created_at').reverse(),
+      };
+    case 'SORT_OLDEST':
+      console.log('DRD9 SORT_OLDEST');
+      return {
+        ...state,
+        data: sortBy(state.data, 'created_at'),
       };
     default:
       throw new Error();

@@ -24,9 +24,6 @@ const Container = () => {
     isError: false,
   });
 
-  const [sortedStories, dispatchSortedStories] = useReducer(sortReducer, {
-    data: stories.data,
-  });
   const [sortValue, setSortValue] = useState('most_recent');
 
   const handleFetchStories = useCallback(() => {
@@ -72,10 +69,10 @@ const Container = () => {
 
     switch (event.target.value) {
       case 'most_recent':
-        dispatchSortedStories({ type: 'SORT_MOST_RECENT' });
+        dispatchStories({ type: 'SORT_MOST_RECENT' });
         break;
       case 'oldest':
-        dispatchSortedStories({ type: 'SORT_OLDEST' });
+        dispatchStories({ type: 'SORT_OLDEST' });
         break;
       default:
         break;
@@ -84,6 +81,7 @@ const Container = () => {
 
   const sortTest = sortBy(stories.data, 'created_at').reverse();
   console.log('DRD sortBy test --', sortTest);
+  console.log('DRD5 - inside `Container` log `stories.data:::', stories.data);
 
   return (
     <StyledContainer>
