@@ -1,8 +1,6 @@
 import sortBy from 'lodash/sortBy';
 
 const storiesReducer = (state, action) => {
-  console.log('DRDX action.payload:::', action.payload);
-  console.log('DRDX state:::', state);
   switch (action.type) {
     case 'STORIES_FETCH_INIT':
       return {

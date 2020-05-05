@@ -11,20 +11,23 @@ const SearchForm = ({
 }) => {
   return (
     <StyledForm onSubmit={handleSearchSubmit}>
-      <InputWithLabel
-        id="search"
-        value={searchTerm}
-        isFocused
-        onInputChange={handleSearchInput}
-      >
-        Topic:{' '}
-      </InputWithLabel>
+      <div className="search-input-container">
+        <InputWithLabel
+          id="search"
+          value={searchTerm}
+          isFocused
+          onInputChange={handleSearchInput}
+        >
+          Topic:{' '}
+        </InputWithLabel>
 
-      <StyledSearchButton type="submit" disabled={!searchTerm}>
-        search
-      </StyledSearchButton>
-      <label>
-        Sort by:
+        <StyledSearchButton type="submit" disabled={!searchTerm}>
+          search
+        </StyledSearchButton>
+      </div>
+
+      <div className="sort-input-container">
+        <label>Sort by: </label>
         <select value={sortValue} onChange={handleSort}>
           <option value="most_recent">Most recent</option>
           <option value="oldest">Oldest</option>
@@ -33,7 +36,7 @@ const SearchForm = ({
           <option value="most_comments">Most comments</option>
           <option value="least_comments">Least comments</option>
         </select>
-      </label>
+      </div>
     </StyledForm>
   );
 };
