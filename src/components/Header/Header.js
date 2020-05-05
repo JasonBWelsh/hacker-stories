@@ -2,7 +2,13 @@ import React from 'react';
 import { StyledHeader, MainHeading } from './styles';
 import SearchForm from '../SearchForm/SearchForm.js';
 
-const Header = ({ searchTerm, handleSearchInput, handleSearchSubmit }) => {
+const Header = ({
+  searchTerm,
+  handleSearchInput,
+  handleSearchSubmit,
+  handleSort,
+  sortValue,
+}) => {
   return (
     <StyledHeader>
       <MainHeading>Hacker News Search</MainHeading>
@@ -10,6 +16,8 @@ const Header = ({ searchTerm, handleSearchInput, handleSearchSubmit }) => {
         handleSearchSubmit={handleSearchSubmit}
         searchTerm={searchTerm}
         handleSearchInput={handleSearchInput}
+        handleSort={handleSort}
+        sortValue={sortValue}
       />
     </StyledHeader>
   );

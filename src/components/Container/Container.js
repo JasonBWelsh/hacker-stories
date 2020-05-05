@@ -4,7 +4,9 @@ import Header from '../Header/Header.js';
 import Page from '../Page/Page.js';
 import useSemiPersistentState from '../../hooks/useSemiPersistantState';
 import storiesReducer from '../../reducers/storiesReducer';
+import sortReducer from '../../reducers/sortReducer';
 import { StyledContainer } from './styles';
+import sortBy from 'lodash/sortBy';
 
 const API_ENDPOINT = 'https://hn.algolia.com/api/v1/search?query=';
 
@@ -21,6 +23,11 @@ const Container = () => {
     isLoading: false,
     isError: false,
   });
+
+  const [sortedStories, dispatchSortedStories] = useReducer(sortReducer, {
+    data: stories.data,
+  });
+  const [sortValue, setSortValue] = useState('most_recent');
 
   const handleFetchStories = useCallback(() => {
     dispatchStories({ type: 'STORIES_FETCH_INIT' });
@@ -59,12 +66,22 @@ const Container = () => {
     setUrl(`${API_ENDPOINT}${searchTerm}`);
   };
 
+  const handleSort = (event) => {
+    console.log('DRD sort handler log target value -', event.target.value);
+    setSortValue(event.target.value);
+  };
+
+  const sortTest = sortBy(stories.data, 'created_at').reverse();
+  console.log('DRD sortBy test --', sortTest);
+
   return (
     <StyledContainer>
       <Header
         handleSearchSubmit={handleSearchSubmit}
         searchTerm={searchTerm}
         handleSearchInput={handleSearchInput}
+        handleSort={handleSort}
+        sortValue={sortValue}
       />
       <Page
         list={stories.data}
