@@ -69,6 +69,17 @@ const Container = () => {
   const handleSort = (event) => {
     console.log('DRD sort handler log target value -', event.target.value);
     setSortValue(event.target.value);
+
+    switch (event.target.value) {
+      case 'most_recent':
+        dispatchSortedStories({ type: 'SORT_MOST_RECENT' });
+        break;
+      case 'oldest':
+        dispatchSortedStories({ type: 'SORT_OLDEST' });
+        break;
+      default:
+        break;
+    }
   };
 
   const sortTest = sortBy(stories.data, 'created_at').reverse();

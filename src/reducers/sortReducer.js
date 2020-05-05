@@ -1,7 +1,11 @@
 const sortReducer = (state, action) => {
-  console.log('DRD reducer state:::', state);
+  console.log('DRD sortReducer:::', state, action.type);
   switch (action.type) {
     case 'SORT_MOST_RECENT':
+      return {
+        ...state,
+      };
+    case 'SORT_OLDEST':
       return {
         ...state,
       };
